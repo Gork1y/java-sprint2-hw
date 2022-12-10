@@ -1,33 +1,52 @@
-/*
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class YearReport {
-}
+    ArrayList<ItemForYear> itemForPrint = new ArrayList<>();
 
-    HashMap<String, ArrayList<Item>> items = new HashMap<>();
+    public void printYear(ArrayList<ItemForYear> records) {
+        itemForPrint = records;
 
-    public void addMonth(String key, ArrayList<Item> value) { //Метод для сохранения данных за месяц
-        items.put(key, value);
-        System.out.println(items);
     }
 
-    public void printReport(){
+    public void printReport() {
 
-        System.out.println(itemsForPrint+"222222222222222222222222222222222222222222222");
-        for (String monthNumber : items.keySet()) {
-            ArrayList<Item> values = items.get(monthNumber);
-            for (Item element : values) {
-                System.out.println(element);
-                if(element.isExpense){
-                    System.out.println("огоооооооо"+element);
-                }else {
-                    System.out.println("мдяяяяяя");
+        if (itemForPrint.size() != 0) {
+            System.out.println("Данный отчет составлен за 2021 год.");
+            System.out.println(itemForPrint);
+            int getName = 0;
+            for (ItemForYear element : itemForPrint) {
+
+                if (!element.isExpense) {
+                    getName = element.month;
+
+                } else {
+
                 }
+                System.out.println(getName);
             }
+
+        } else {
+            System.out.println("Список не был загружен (Нажмите цифру 2)");
         }
     }
 
+    public String getMonthNameForYear(int month) {
+        String result;
+        switch (month) {
+            case 1:
+                result = "Январь";
+                break;
+            case 2:
+                result = "Февраль";
+                break;
+            case 3:
+                result = "Март";
+                break;
+            default:
+                result = "Не знаем такого месяца";
+                break;
+        }
+        return result;
+    }
 }
-
- */
